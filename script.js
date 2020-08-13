@@ -2,12 +2,13 @@ let registerButton = document.querySelector('.register-button');
 let loginButton = document.querySelector('.login-button');
 let escapeButton = document.querySelectorAll('.escape');
 let confirmRegistrationButton = document.querySelector('.confirm-registration');
+let confirmLoginButton = document.querySelector('.confirm-login');
 
 let wrapper = document.querySelector('.wrapper');
+let fogging = document.querySelector('.fogging');
+let modalWindow = document.querySelectorAll('.modal');
 let registerWindow = document.querySelector('.register-window');
 let loginWindow = document.querySelector('.login-window');
-let modalWindow = document.querySelectorAll('.modal');
-let fogging = document.querySelector('.fogging');
 
 // Затемнение и блокировка при появлении модального окна
 function blockAndFogging() {
@@ -40,12 +41,12 @@ escapeButton.forEach(item => {
 
 // Отправка формы регистрации
 confirmRegistrationButton.addEventListener('click', function() {
-	let currentForm = document.forms.registerForm;
+	let currentForm = document.forms.registerForm; /*Создание нового пользователя на основании введённых данных*/
 	let login = currentForm.elements.login.value;
 	let password = currentForm.elements.password.value;
 	let name = currentForm.elements.username.value;
 	let age = currentForm.elements.age.value;
-	let newUser = new User(login, password, name, age); /*Создание нового пользователя на основании введённых данных*/
+	let newUser = new User(login, password, name, age); 
 
 	let check = true; /*Проверка на отсутствие пустых полей*/ 
 	while(check) {
@@ -62,7 +63,29 @@ confirmRegistrationButton.addEventListener('click', function() {
 	currentForm.reset();
 	registerWindow.style.display = 'none';
 	fogging.style.display = 'none';
-	console.log(userList);
+});
+
+// Подтверждение входа
+confirmLoginButton.addEventListener('click', function() {
+	let currentForm = document.forms.loginForm;
+	let login = currentForm.elements.login.value;
+	let password = currentForm.elements.password.value;
+
+	let user = userList.find(item => item.login === login && item.password === password);
+	
+	if(user) {
+		alert('Поздравляем, Вы успешно зашли на сайт');
+	} else {
+		alert('Пользователь не существует либо пароль неверный');
+		currentForm.reset();
+		return;
+	}
+
+	loginWindow.style.display = 'none';
+	fogging.style.display = 'none';
+	currentForm.reset();
+
+	alert(`Данные пользователя:\nИмя: ${user.name}\nВозраст: ${user.age}`);
 });
 
 //---------------------------------------------------------------------------------
