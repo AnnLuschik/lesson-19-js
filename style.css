@@ -51,6 +51,7 @@ input {
 }
 
 button {
+	min-width: 100px;
 	margin: 0 15px;
 	padding: 15px 10px;
 	color: #999999;
@@ -95,6 +96,6 @@ button {
 }
 
 .body-lock {
-	overflow: hidden;
+	overflow-y: hidden;
 	position: fixed;
 }
