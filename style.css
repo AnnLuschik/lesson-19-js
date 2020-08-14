@@ -64,19 +64,23 @@ form {
 	padding: 15px 5px;
 }
 
-label {
-	display: flex;
-	align-items: baseline;
+form div {
+	position: relative;
 }
 
-label p {
+label {
+	position: absolute;
+	top: 10px;
+	left: 15px;
 	font-weight: 400;
-	font-size: 16px;
+	font-size: 14px;
+	color: #555555;
+	opacity: 0.5;
 }
 
 input {
 	margin-bottom: 10px;
-	width: 75%;
+	width: 100%;
 	padding: 10px 20px;
 	color: #555555;
 	background: none;
@@ -84,6 +88,10 @@ input {
 	border-radius: 20px;
 	outline: none;
 	box-shadow: inset 3px 3px 3px #cbced1, inset -3px -3px 3px #ffffff;
+}
+
+input:focus + label {
+	opacity: 0;
 }
 
 .login-button,
