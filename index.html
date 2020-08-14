@@ -3,75 +3,61 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="./style.css">
 	<script defer src="./script.js"></script>
 	<title>Lesson 19 JavaScript</title>
 </head>
 <body>
-	<div class="wrapper">
+	<div class="wrapper">			
+		<div class="fogging"></div>
 		<header>
-			<h1>Здесь может быть ваш заголовок</h1>
+			<div class="content__logo"></div>
+			<h1 class="content__title">Social network</h1>
+			<h2 class="content__text">for good boys</h2>
 		</header>
-			
 		<main>
-			<div class="fogging"></div>
 			<div class="content">
-				<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Pariatur eligendi optio tempora officiis iure consequuntur 
-					quos aliquam perspiciatis sequi, doloribus ab porro, dicta beatae iusto laborum mollitia obcaecati necessitatibus dolorum 
-					nobis nam? Perspiciatis laboriosam nobis animi nisi minus? Tempore, aspernatur commodi ad reiciendis, nostrum soluta minima 
-					possimus ratione officia saepe rem quo voluptates perspiciatis placeat doloribus vero quaerat consequatur incidunt rerum 
-					eius labore illo? Quae, repellat? Asperiores ducimus eligendi recusandae nemo mollitia pariatur, distinctio laborum deserunt 
-					placeat corrupti incidunt similique quas eveniet vitae vero, praesentium expedita aut eum quam libero quod. Temporibus 
-					tenetur cumque adipisci. Rerum aut harum nobis tempore enim provident et. Soluta molestiae debitis labore cumque libero 
-					accusamus ullam, inventore repellat dolore voluptates aut nam perspiciatis vero in iste provident quas eaque dicta eos 
-					dolorum deserunt. A magni, non illum debitis tempora cum consequuntur corrupti. Odio incidunt quam a corporis! Animi 
-					mollitia fugit eum, nihil nemo id enim rerum ducimus a tempore eius sunt qui! Corporis consequatur ex numquam illo quae 
-					unde, architecto porro molestiae perspiciatis, ipsa quasi sit vitae sequi a sunt soluta exercitationem laudantium! 
-					Repellendus animi cupiditate nulla atque sequi error eveniet, nostrum maxime perspiciatis, fugiat optio consequatur 
-					sit odio aperiam voluptatem commodi rem in! Totam consequuntur maiores est voluptate cum vitae animi voluptatum officia, 
-					aut recusandae fugiat necessitatibus labore doloremque temporibus mollitia expedita dolore ipsam illum iure qui blanditiis 
-					deserunt? Earum non perspiciatis asperiores. Sint voluptatibus repellat dolor, necessitatibus ex qui quis reiciendis rem vitae, 
-					omnis, quaerat facilis itaque. Dolorum nostrum explicabo iusto! Possimus quo recusandae debitis mollitia delectus, sed molestias 
-					accusantium adipisci reiciendis eligendi veritatis rem quae eveniet iste repudiandae doloremque dolorem laborum eum alias eius 
-					odio commodi sunt. Quibusdam, iure a nesciunt ipsa veniam similique, modi, officiis exercitationem velit nisi ipsam! Hic eum 
-					pariatur iusto. Veritatis nemo minus consequuntur quasi deleniti recusandae dolore.
-				</p>
+				<p>Name: <span></span></p>
+				<p>Age: <span></span></p>
 			</div>
 			<div class="userbar">
-				<button class="register-button">Регистрация</button>
+				<button class="login-button">Login</button>
+				<p class="userbar__text">or</p>
+				<button class="register-button">Sign up</button>
 				<div class="modal register-window">
 					<div class="modal-content">
-						<p>Введите Ваши данные:</p>
+						<p>Fill this form to create an account</p>
 						<form name="registerForm">
-							<label><p>Логин</p><input type="text" name="login"></label>
-							<label><p>Пароль</p><input type="password" name="password"></label>
-							<label><p>Имя</p><input type="text" name="username"></label>
-							<label><p>Возраст</p><input type="number" min="1" name="age"></label>
+							<input type="text" name="login" placeholder="Login">
+							<input type="password" name="password" placeholder="Password">
+							<input type="text" name="username" placeholder="Name">
+							<input type="number" min="1" name="age" placeholder="Age">
 						</form>
 						<div>
-							<button class="confirm-registration" type="submit">Подтвердить</button>
-							<button class="escape">Отмена</button>
+							<button class="confirm-registration" type="submit">Confirm</button>
+							<button class="escape">Close</button>
 						</div>
 					</div>
 				</div>
-				<button class="login-button">Вход</button>
 				<div class="modal login-window">
 					<div class="modal-content">
-						<p>Авторизация</p>
+						<p>Login</p>
 						<form name="loginForm">
-							<input type="text" name="login" placeholder="Логин">
-							<input type="password" name="password" placeholder="Пароль">
+							<input type="text" name="login" placeholder="Login">
+							<input type="password" name="password" placeholder="Password">
 						</form>
 						<div>
-							<button class="confirm-login" type="submit">Подтвердить</button>
-							<button class="escape">Отмена</button>
+							<button class="confirm-login" type="submit">Confirm</button>
+							<button class="escape">Close</button>
 						</div>
 					</div>
 				</div>
+			</div>	
+			<div class="innerUserbar">
+				<button class="innerUserbar-button">Logout</button>
 			</div>
-
 		</main>
-		
 	</div>
 </body>
 </html>

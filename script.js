@@ -3,12 +3,16 @@ let loginButton = document.querySelector('.login-button');
 let escapeButton = document.querySelectorAll('.escape');
 let confirmRegistrationButton = document.querySelector('.confirm-registration');
 let confirmLoginButton = document.querySelector('.confirm-login');
+let escapeToMainButton = document.querySelector('.innerUserbar-button');
 
 let wrapper = document.querySelector('.wrapper');
 let fogging = document.querySelector('.fogging');
 let modalWindow = document.querySelectorAll('.modal');
 let registerWindow = document.querySelector('.register-window');
 let loginWindow = document.querySelector('.login-window');
+let innerUserbar = document.querySelector('.innerUserbar');
+let divContent = document.querySelector('.content');
+let userbar = document.querySelector('.userbar');
 
 // Затемнение и блокировка при появлении модального окна
 function blockAndFogging() {
@@ -34,7 +38,7 @@ escapeButton.forEach(item => {
 		item.closest('.modal').style.display = 'none';
 		fogging.style.display = 'none';
 		let parent = item.parentElement;
-		let form = parent.children[1];
+		let form = parent.previousElementSibling;
 		form.reset();
 	});
 });
@@ -85,7 +89,20 @@ confirmLoginButton.addEventListener('click', function() {
 	fogging.style.display = 'none';
 	currentForm.reset();
 
-	alert(`Данные пользователя:\nИмя: ${user.name}\nВозраст: ${user.age}`);
+	let span = document.querySelectorAll('.content span');
+	span[0].innerHTML = user.name;
+	span[1].innerHTML = user.age;
+
+	divContent.style.visibility = 'visible';
+	userbar.style.display = 'none';
+	innerUserbar.style.display = 'block';
+});
+
+// Выход на главную страницу
+escapeToMainButton.addEventListener('click', function() {
+	divContent.style.visibility = 'hidden';
+	userbar.style.display = 'flex';
+	innerUserbar.style.display = 'none';
 });
 
 //---------------------------------------------------------------------------------
