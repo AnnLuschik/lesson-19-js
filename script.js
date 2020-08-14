@@ -76,6 +76,18 @@ confirmRegistrationButton.addEventListener('click', function() {
 // Подтверждение входа
 confirmLoginButton.addEventListener('click', function() {
 	let currentForm = document.forms.loginForm;
+
+	let check = true; /*Проверка на отсутствие пустых полей*/
+	while(check) {
+		for(let item of currentForm.elements) {
+			if(item.value === '') {
+				alert('All fields must be filled out');
+				return check;
+			}
+		}
+		check = false;
+	}
+
 	let login = currentForm.elements.login.value;
 	let password = currentForm.elements.password.value;
 

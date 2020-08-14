@@ -81,7 +81,6 @@ main {
 	padding: 15px;
 	margin-bottom: 30px;
 	visibility: hidden;
-
 	box-shadow: 
 	0px 0px 0px 5px #ecf0f3,
 	8px 8px 15px #a7aaaf,
@@ -121,6 +120,7 @@ label {
 	position: absolute;
 	top: 10px;
 	left: 15px;
+
 	font-weight: 400;
 	font-size: 14px;
 	color: #555555;
@@ -128,9 +128,10 @@ label {
 }
 
 input {
-	margin-bottom: 10px;
 	width: 100%;
+	margin-bottom: 10px;
 	padding: 10px 20px;
+
 	color: #555555;
 	background: none;
 	border: none;
@@ -140,6 +141,10 @@ input {
 }
 
 input:focus + label {
+	opacity: 0;
+}
+
+input:valid + label {
 	opacity: 0;
 }
 
@@ -207,10 +212,12 @@ input:focus + label {
 .escape {
 	padding: 10px 15px;
 	margin: 0 15px;
+
 	font-weight: 700;
 	font-size: 18px;
 	color: #555555;
 	letter-spacing: 0.3px;
+
 	border: none;
 	border-radius: 20px;
 	outline: none;
@@ -227,6 +234,7 @@ input:focus + label {
 	justify-content: center;
 	width: 100%;
 	padding: 15px;
+
 	font-size: 20px;
 	background: #ECF0F3;
 	border: none;
@@ -235,10 +243,10 @@ input:focus + label {
 }
 
 .modal-content {
-	width: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	width: 100%;
 }
 
 .modal-content > p {
