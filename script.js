@@ -1,3 +1,4 @@
+// Кнопки
 let registerButton = document.querySelector('.register-button');
 let loginButton = document.querySelector('.login-button');
 let escapeButton = document.querySelectorAll('.escape');
@@ -5,6 +6,7 @@ let confirmRegistrationButton = document.querySelector('.confirm-registration');
 let confirmLoginButton = document.querySelector('.confirm-login');
 let escapeToMainButton = document.querySelector('.innerUserbar-button');
 
+// Элементы сайта
 let wrapper = document.querySelector('.wrapper');
 let fogging = document.querySelector('.fogging');
 let modalWindow = document.querySelectorAll('.modal');
@@ -19,6 +21,8 @@ function blockAndFogging() {
 	document.body.classList.add('body-lock');
 	fogging.style.display = 'block';
 }
+
+/*--------------------------------Обработчики событий--------------------------------*/
 
 // Вызов модального окна для регистрации
 registerButton.addEventListener('click', function() {
