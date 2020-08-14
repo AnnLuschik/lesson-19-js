@@ -56,7 +56,7 @@ confirmRegistrationButton.addEventListener('click', function() {
 	while(check) {
 		for(let key in newUser) {
 			if(newUser[key] === '') {
-				alert('Необходимо заполнить все поля');
+				alert('All fields must be filled out');
 				return check;
 			} 
 		}
@@ -78,9 +78,9 @@ confirmLoginButton.addEventListener('click', function() {
 	let user = userList.find(item => item.login === login && item.password === password);
 	
 	if(user) {
-		alert('Поздравляем, Вы успешно зашли на сайт');
+		alert('Congratulations, woof!');
 	} else {
-		alert('Пользователь не существует либо пароль неверный');
+		alert('Invalid username or password');
 		currentForm.reset();
 		return;
 	}
