@@ -30,6 +30,13 @@ function getNoEmptyFields(object) {
 	return true;
 }
 
+// Закрытие модального окна с очисткой формы
+function resetModalWindowStyles(window, form) {
+	window.style.display = 'none';
+	fogging.style.display = 'none';
+	form.reset();
+}
+
 /*--------------------------------Обработчики событий--------------------------------*/
 
 // Вызов модального окна для регистрации
@@ -44,26 +51,25 @@ loginButton.addEventListener('click', function() {
 	loginWindow.style.display = 'flex';
 });
 
-// Закрытие модального окна
+// Закрытие модального окна при нажатии на "Close"
 escapeButton.forEach(item => {
 	item.addEventListener('click', function() {
-		item.closest('.modal').style.display = 'none';
-		fogging.style.display = 'none';
+		let window = item.closest('.modal');
 		let parent = item.parentElement;
 		let form = parent.previousElementSibling;
-		form.reset();
+		resetModalWindowStyles(window, form);
 	});
 });
 
 // Отправка формы регистрации
 confirmRegistrationButton.addEventListener('click', function() {
-	let currentForm = document.forms.registerForm; /*Создание нового пользователя на основании введённых данных*/
+	let currentForm = document.forms.registerForm; 
 	let currentUser = {
 		login: currentForm.elements.login.value,
 		password: currentForm.elements.password.value,
 		name: currentForm.elements.username.value,
 		age: currentForm.elements.age.value,
-	};
+	}; 
 
 	let check = getNoEmptyFields(currentUser);
 
@@ -73,9 +79,8 @@ confirmRegistrationButton.addEventListener('click', function() {
 		newUser = currentUser;
 		userList.push(newUser);
 		alert('Registration is successful!');
-		currentForm.reset();
-		registerWindow.style.display = 'none';
-		fogging.style.display = 'none';
+		resetModalWindowStyles(registerWindow, currentForm);
+
 	} else alert('All fields must be filled out');
 });
 
@@ -91,13 +96,14 @@ confirmLoginButton.addEventListener('click', function() {
 	let check = getNoEmptyFields(currentUser);
 	let user;
 
+	// Проверка пустых полей
 	if(check) {
 		user = userList.find(item => item.login === currentUser.login && item.password === currentUser.password);	
 	} else {
 		alert('All fields must be filled out');
 		return false;
 	}
-	
+	// Проверка правильности ввода
 	if(user) {
 		alert('Congratulations, woof!');
 	} else {
@@ -106,9 +112,7 @@ confirmLoginButton.addEventListener('click', function() {
 		return;
 	}
 
-	loginWindow.style.display = 'none';
-	fogging.style.display = 'none';
-	currentForm.reset();
+	resetModalWindowStyles(loginWindow, currentForm); // Закрытие модального окна
 
 	let span = document.querySelectorAll('.content span');
 	span[0].innerHTML = user.name;
