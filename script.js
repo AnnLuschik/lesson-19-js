@@ -22,6 +22,14 @@ function fogModalLayout() {
 	fogging.style.display = 'block';
 }
 
+//Проверка объекта на наличие пустых полей
+function getNoEmptyFields(object) {
+	for(let key in object) {
+		if(object[key] === '') return false;
+	}
+	return true;
+}
+
 /*--------------------------------Обработчики событий--------------------------------*/
 
 // Вызов модального окна для регистрации
@@ -50,27 +58,25 @@ escapeButton.forEach(item => {
 // Отправка формы регистрации
 confirmRegistrationButton.addEventListener('click', function() {
 	let currentForm = document.forms.registerForm; /*Создание нового пользователя на основании введённых данных*/
-	let login = currentForm.elements.login.value;
-	let password = currentForm.elements.password.value;
-	let name = currentForm.elements.username.value;
-	let age = currentForm.elements.age.value;
-	let newUser = new User(login, password, name, age); 
+	let currentUser = {
+		login: currentForm.elements.login.value,
+		password: currentForm.elements.password.value,
+		name: currentForm.elements.username.value,
+		age: currentForm.elements.age.value,
+	};
 
-	let check = true; /*Проверка на отсутствие пустых полей*/ 
-	while(check) {
-		for(let key in newUser) {
-			if(newUser[key] === '') {
-				alert('All fields must be filled out');
-				return check;
-			} 
-		}
-		check = false;
-	}
-	
-	userList.push(newUser); /*Добавление пользователя в пользовательский массив, закрытие окна*/
-	currentForm.reset();
-	registerWindow.style.display = 'none';
-	fogging.style.display = 'none';
+	let check = getNoEmptyFields(currentUser);
+
+	let newUser = new User();
+
+	if(check) {
+		newUser = currentUser;
+		userList.push(newUser);
+		alert('Registration is successful!');
+		currentForm.reset();
+		registerWindow.style.display = 'none';
+		fogging.style.display = 'none';
+	} else alert('All fields must be filled out');
 });
 
 // Подтверждение входа
