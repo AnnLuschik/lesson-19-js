@@ -83,21 +83,20 @@ confirmRegistrationButton.addEventListener('click', function() {
 confirmLoginButton.addEventListener('click', function() {
 	let currentForm = document.forms.loginForm;
 
-	let check = true; /*Проверка на отсутствие пустых полей*/
-	while(check) {
-		for(let item of currentForm.elements) {
-			if(item.value === '') {
-				alert('All fields must be filled out');
-				return check;
-			}
-		}
-		check = false;
+	let currentUser = {
+		login: currentForm.elements.login.value,
+		password: currentForm.elements.password.value,
 	}
 
-	let login = currentForm.elements.login.value;
-	let password = currentForm.elements.password.value;
+	let check = getNoEmptyFields(currentUser);
+	let user;
 
-	let user = userList.find(item => item.login === login && item.password === password);
+	if(check) {
+		user = userList.find(item => item.login === currentUser.login && item.password === currentUser.password);	
+	} else {
+		alert('All fields must be filled out');
+		return false;
+	}
 	
 	if(user) {
 		alert('Congratulations, woof!');
