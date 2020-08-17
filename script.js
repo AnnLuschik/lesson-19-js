@@ -17,7 +17,7 @@ let divContent = document.querySelector('.content');
 let userbar = document.querySelector('.userbar');
 
 // Затемнение и блокировка при появлении модального окна
-function blockAndFogging() {
+function fogModalLayout() {
 	document.body.classList.add('body-lock');
 	fogging.style.display = 'block';
 }
@@ -26,13 +26,13 @@ function blockAndFogging() {
 
 // Вызов модального окна для регистрации
 registerButton.addEventListener('click', function() {
-	blockAndFogging();
+	fogModalLayout();
 	registerWindow.style.display = 'block';
 });
 
 // Вызов модального окна для входа
 loginButton.addEventListener('click', function() {
-	blockAndFogging();
+	fogModalLayout();
 	loginWindow.style.display = 'flex';
 });
 
